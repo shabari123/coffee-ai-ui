@@ -662,3 +662,699 @@ header p {
 
 	transform: translateY(-1px);
 }
+/* =========================================================
+   SWASTHYA COFFEE WIDGET — POLISHED
+   ========================================================= */
+
+.sw-widget {
+	font-family:
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Arial,
+		sans-serif;
+}
+
+
+/* =========================================================
+   FLOATING BUTTON
+   ========================================================= */
+
+.sw-widget-button {
+	position: fixed;
+
+	right: 24px;
+	bottom: 24px;
+
+	width: 62px;
+	height: 62px;
+
+	border: none;
+	border-radius: 50%;
+
+	background: linear-gradient(
+		135deg,
+		#4b2e2b,
+		#704936
+	);
+
+	color: white;
+
+	font-size: 29px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	cursor: pointer;
+
+	box-shadow:
+		0 8px 24px rgba(65, 40, 32, 0.30);
+
+	z-index: 999999;
+
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.sw-widget-button:hover {
+	transform: translateY(-2px) scale(1.04);
+
+	box-shadow:
+		0 11px 30px rgba(65, 40, 32, 0.38);
+}
+
+.sw-widget-button-open {
+	font-size: 31px;
+}
+
+
+/* =========================================================
+   CHAT WINDOW
+   ========================================================= */
+
+.sw-widget-window {
+	position: fixed;
+
+	right: 24px;
+	bottom: 100px;
+
+	width: 380px;
+
+	height: min(610px, calc(100vh - 120px));
+
+	min-height: 420px;
+
+	background: #ffffff;
+
+	border-radius: 20px;
+
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+
+	border: 1px solid #e7ded8;
+
+	box-shadow:
+		0 20px 55px rgba(45, 30, 25, 0.20);
+
+	z-index: 999998;
+
+	animation: swWidgetOpen 0.22s ease-out;
+}
+
+@keyframes swWidgetOpen {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(0.97);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.sw-widget-header {
+	height: 74px;
+
+	padding: 12px 15px;
+
+	background: linear-gradient(
+		135deg,
+		#4b2e2b,
+		#633d35
+	);
+
+	color: white;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	flex-shrink: 0;
+}
+
+.sw-widget-brand {
+	display: flex;
+	align-items: center;
+
+	gap: 10px;
+}
+
+.sw-widget-logo {
+	width: 42px;
+	height: 42px;
+
+	border-radius: 50%;
+
+	background: rgba(255, 255, 255, 0.13);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 21px;
+
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.sw-widget-title {
+	font-size: 15px;
+
+	font-weight: 700;
+
+	letter-spacing: 0.1px;
+}
+
+.sw-widget-subtitle {
+	display: flex;
+	align-items: center;
+
+	gap: 5px;
+
+	margin-top: 4px;
+
+	font-size: 10.5px;
+
+	color: rgba(255, 255, 255, 0.78);
+}
+
+.sw-widget-subtitle::before {
+	content: "";
+
+	width: 6px;
+	height: 6px;
+
+	border-radius: 50%;
+
+	background: #8fc98f;
+
+	box-shadow:
+		0 0 0 2px rgba(143, 201, 143, 0.15);
+}
+
+.sw-widget-close {
+	width: 34px;
+	height: 34px;
+
+	border: none;
+	border-radius: 50%;
+
+	background: rgba(255, 255, 255, 0.10);
+
+	color: white;
+
+	font-size: 24px;
+
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition:
+		background 0.15s ease,
+		transform 0.15s ease;
+}
+
+.sw-widget-close:hover {
+	background: rgba(255, 255, 255, 0.20);
+
+	transform: rotate(3deg);
+}
+
+
+/* =========================================================
+   MESSAGE AREA
+   ========================================================= */
+
+.sw-widget-messages {
+	flex: 1;
+
+	overflow-y: auto;
+
+	padding: 18px 14px;
+
+	background: #ffffff;
+
+	scroll-behavior: smooth;
+}
+
+.sw-widget-messages::-webkit-scrollbar {
+	width: 5px;
+}
+
+.sw-widget-messages::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.sw-widget-messages::-webkit-scrollbar-thumb {
+	background: #d7cec8;
+
+	border-radius: 10px;
+}
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.sw-widget-welcome {
+	min-height: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
+
+	padding: 25px 12px;
+}
+
+.sw-widget-welcome-icon {
+	width: 68px;
+	height: 68px;
+
+	border-radius: 50%;
+
+	background: #f5ece7;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 31px;
+
+	margin-bottom: 15px;
+
+	box-shadow:
+		0 5px 15px rgba(75, 46, 43, 0.08);
+}
+
+.sw-widget-welcome h2 {
+	margin: 0;
+
+	color: #4b2e2b;
+
+	font-size: 23px;
+
+	font-weight: 700;
+}
+
+.sw-widget-welcome p {
+	margin: 8px 0 22px;
+
+	color: #77706b;
+
+	font-size: 13px;
+
+	line-height: 1.5;
+}
+
+
+/* =========================================================
+   SUGGESTIONS
+   ========================================================= */
+
+.sw-widget-suggestions {
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	gap: 9px;
+}
+
+.sw-widget-suggestions button {
+	width: 100%;
+
+	min-height: 40px;
+
+	padding: 9px 13px;
+
+	border: 1px solid #e0d4cc;
+
+	border-radius: 21px;
+
+	background: #ffffff;
+
+	color: #60453a;
+
+	font-size: 12px;
+
+	cursor: pointer;
+
+	transition:
+		background 0.15s ease,
+		border-color 0.15s ease,
+		transform 0.15s ease,
+		box-shadow 0.15s ease;
+}
+
+.sw-widget-suggestions button:hover {
+	background: #faf6f3;
+
+	border-color: #bfa99b;
+
+	transform: translateY(-1px);
+
+	box-shadow:
+		0 3px 10px rgba(75, 46, 43, 0.06);
+}
+
+
+/* =========================================================
+   CHAT MESSAGES
+   ========================================================= */
+
+.sw-widget .message {
+	display: flex;
+
+	margin: 10px 0;
+}
+
+.sw-widget .message.ai {
+	justify-content: flex-start;
+}
+
+.sw-widget .message.user {
+	justify-content: flex-end;
+}
+
+.sw-widget .bubble {
+	max-width: 82%;
+
+	padding: 10px 13px;
+
+	border-radius: 16px;
+
+	font-size: 13px;
+
+	line-height: 1.5;
+}
+
+.sw-widget .message.ai .bubble {
+	background: #f1f2f3;
+
+	color: #2d2926;
+
+	border-bottom-left-radius: 5px;
+}
+
+.sw-widget .message.user .bubble {
+	background: #6f4e37;
+
+	color: white;
+
+	border-bottom-right-radius: 5px;
+}
+
+
+/* =========================================================
+   PRODUCT CARDS
+   ========================================================= */
+
+.sw-widget .products-container {
+	display: flex;
+
+	flex-direction: column;
+
+	gap: 9px;
+
+	margin-top: 10px;
+
+	width: 100%;
+}
+
+.sw-widget .product-card {
+	padding: 10px;
+
+	gap: 10px;
+
+	border-radius: 12px;
+
+	border: 1px solid #e5ddd7;
+
+	background: #ffffff;
+
+	box-shadow:
+		0 2px 7px rgba(60, 40, 30, 0.04);
+}
+
+.sw-widget .product-image {
+	width: 64px;
+	height: 64px;
+
+	border-radius: 8px;
+
+	object-fit: contain;
+
+	background: #faf8f6;
+}
+
+.sw-widget .product-info h3 {
+	font-size: 12px;
+
+	line-height: 1.35;
+
+	margin-bottom: 4px;
+}
+
+.sw-widget .product-price {
+	font-size: 13px;
+
+	font-weight: 700;
+}
+
+.sw-widget .product-stock {
+	font-size: 10px;
+
+	margin-bottom: 6px;
+}
+
+.sw-widget .product-button {
+	padding: 6px 10px;
+
+	border-radius: 7px;
+
+	font-size: 10px;
+}
+
+
+/* =========================================================
+   TYPING INDICATOR
+   ========================================================= */
+
+.sw-widget-typing {
+	display: flex;
+	align-items: center;
+
+	gap: 8px;
+
+	width: fit-content;
+
+	padding: 10px 13px;
+
+	margin: 10px 0;
+
+	background: #f1f2f3;
+
+	border-radius: 16px;
+
+	border-bottom-left-radius: 5px;
+}
+
+.sw-widget-typing > span {
+	font-size: 16px;
+}
+
+.sw-widget-dots {
+	display: flex;
+
+	gap: 4px;
+}
+
+.sw-widget-dots span {
+	width: 6px;
+	height: 6px;
+
+	background: #6f4e37;
+
+	border-radius: 50%;
+
+	animation: swWidgetTyping 1.4s infinite ease-in-out;
+}
+
+.sw-widget-dots span:nth-child(2) {
+	animation-delay: 0.2s;
+}
+
+.sw-widget-dots span:nth-child(3) {
+	animation-delay: 0.4s;
+}
+
+@keyframes swWidgetTyping {
+	0%,
+	60%,
+	100% {
+		transform: translateY(0);
+		opacity: 0.4;
+	}
+
+	30% {
+		transform: translateY(-4px);
+		opacity: 1;
+	}
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.sw-widget-input {
+	display: flex;
+
+	gap: 8px;
+
+	padding: 10px 11px;
+
+	border-top: 1px solid #e6e0dc;
+
+	background: #ffffff;
+
+	flex-shrink: 0;
+}
+
+.sw-widget-input input {
+	flex: 1;
+
+	min-width: 0;
+
+	height: 42px;
+
+	padding: 0 15px;
+
+	border: 1px solid #d7cec8;
+
+	border-radius: 22px;
+
+	background: #fafafa;
+
+	outline: none;
+
+	font-family: inherit;
+
+	font-size: 13px;
+
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+}
+
+.sw-widget-input input::placeholder {
+	color: #99918b;
+}
+
+.sw-widget-input input:focus {
+	border-color: #8a6650;
+
+	background: #ffffff;
+
+	box-shadow:
+		0 0 0 3px rgba(111, 78, 55, 0.07);
+}
+
+.sw-widget-input button {
+	width: 42px;
+	height: 42px;
+
+	flex-shrink: 0;
+
+	border: none;
+
+	border-radius: 50%;
+
+	background: #6f4e37;
+
+	color: white;
+
+	font-size: 17px;
+
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition:
+		background 0.15s ease,
+		transform 0.15s ease;
+}
+
+.sw-widget-input button:hover:not(:disabled) {
+	background: #5c3f2d;
+
+	transform: scale(1.04);
+}
+
+.sw-widget-input button:disabled {
+	opacity: 0.5;
+
+	cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+	.sw-widget-button {
+		right: 18px;
+		bottom: 18px;
+
+		width: 58px;
+		height: 58px;
+	}
+
+	.sw-widget-window {
+		top: 12px;
+		left: 10px;
+		right: 10px;
+		bottom: 88px;
+
+		width: auto;
+		height: auto;
+
+		border-radius: 17px;
+	}
+
+	.sw-widget-header {
+		height: 70px;
+	}
+
+	.sw-widget-welcome {
+		padding: 20px 10px;
+	}
+
+	.sw-widget-welcome h2 {
+		font-size: 21px;
+	}
+
+	.sw-widget-welcome p {
+		font-size: 12px;
+	}
+}
