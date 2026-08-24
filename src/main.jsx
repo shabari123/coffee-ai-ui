@@ -9,6 +9,11 @@ import "./styles/App.css";
 const isWidget =
 	window.location.pathname === "/widget";
 
+document.body.classList.toggle(
+	"sw-widget-mode",
+	isWidget
+);
+
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		{isWidget ? <Widget /> : <App />}

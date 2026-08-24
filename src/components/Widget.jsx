@@ -9,6 +9,18 @@ function Widget() {
 
 	const bottomRef = useRef(null);
 
+	// Tell the WordPress parent page when the widget opens/closes
+	useEffect(() => {
+		window.parent.postMessage(
+			{
+				type: "SWASTHYA_WIDGET_RESIZE",
+				open: isOpen
+			},
+			"https://swasthyacoffee.com"
+		);
+	}, [isOpen]);
+
+	// Keep the latest message visible
 	useEffect(() => {
 		bottomRef.current?.scrollIntoView({
 			behavior: "smooth"
@@ -78,7 +90,10 @@ function Widget() {
 	return (
 		<div className="sw-widget">
 
-			{/* Chat Window */}
+			{/* =========================
+			    CHAT WINDOW
+			    ========================= */}
+
 			{isOpen && (
 				<div className="sw-widget-window">
 
@@ -97,7 +112,7 @@ function Widget() {
 								</div>
 
 								<div className="sw-widget-subtitle">
-									AI Coffee Assistant
+									AI Assistant • Online
 								</div>
 							</div>
 
@@ -114,9 +129,13 @@ function Widget() {
 					</div>
 
 
-					{/* Messages */}
+					{/* =========================
+					    MESSAGES
+					    ========================= */}
+
 					<div className="sw-widget-messages">
 
+						{/* Welcome screen */}
 						{messages.length === 0 && (
 							<div className="sw-widget-welcome">
 
@@ -170,8 +189,11 @@ function Widget() {
 						)}
 
 
+						{/* Chat messages */}
 						{messages.map((message, index) => (
+
 							message.typing ? (
+
 								<div
 									key={index}
 									className="sw-widget-typing"
@@ -184,7 +206,9 @@ function Widget() {
 										<span></span>
 									</div>
 								</div>
+
 							) : (
+
 								<div
 									key={index}
 									className="sw-widget-message-wrapper"
@@ -195,7 +219,9 @@ function Widget() {
 										products={message.products || []}
 									/>
 								</div>
+
 							)
+
 						))}
 
 						<div ref={bottomRef} />
@@ -203,7 +229,10 @@ function Widget() {
 					</div>
 
 
-					{/* Input */}
+					{/* =========================
+					    INPUT
+					    ========================= */}
+
 					<div className="sw-widget-input">
 
 						<input
@@ -211,27 +240,34 @@ function Widget() {
 							placeholder="Ask about coffee..."
 							disabled={loading}
 							onKeyDown={(event) => {
+
 								if (
 									event.key === "Enter" &&
 									event.target.value.trim()
 								) {
 									handleSend(event.target.value);
+
 									event.target.value = "";
 								}
+
 							}}
 						/>
 
 						<button
 							disabled={loading}
 							onClick={(event) => {
+
 								const input =
 									event.currentTarget
 										.previousElementSibling;
 
 								if (input.value.trim()) {
+
 									handleSend(input.value);
+
 									input.value = "";
 								}
+
 							}}
 						>
 							{loading ? "..." : "➤"}
@@ -243,12 +279,19 @@ function Widget() {
 			)}
 
 
-			{/* Floating Button */}
+			{/* =========================
+			    FLOATING BUTTON
+			    ========================= */}
+
 			<button
 				className={`sw-widget-button ${
-					isOpen ? "sw-widget-button-open" : ""
+					isOpen
+						? "sw-widget-button-open"
+						: ""
 				}`}
-				onClick={() => setIsOpen((previous) => !previous)}
+				onClick={() =>
+					setIsOpen((previous) => !previous)
+				}
 				aria-label="Open Swasthya Coffee Assistant"
 			>
 				{isOpen ? "×" : "☕"}
