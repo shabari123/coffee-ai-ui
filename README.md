@@ -1,16 +1,120 @@
-# React + Vite
+# ☕ Swasthya Coffee AI UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React/Vite frontend for the Swasthya Coffee AI Assistant.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+-   React 19
+-   Vite
+-   React Markdown
+-   JavaScript
+-   CSS
 
-## React Compiler
+## Architecture
+Browser
+  ↓
+React App
+  ↓
+api.js
+  ↓
+POST /chat
+  ↓
+Swasthya Coffee FastAPI Backend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Main files
+src/
+├── App.jsx
+├── main.jsx
+├── components/
+│   ├── Header.jsx
+│   ├── Message.jsx
+│   ├── ChatInput.jsx
+│   ├── ProductCard.jsx
+│   └── ChatBox.jsx
+├── services/
+│   └── api.js
+├── utils/
+│   └── session.js
+└── styles/
 
-## Expanding the ESLint configuration
+### `App.jsx`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Controls:
+
+-   Chat state.
+-   Loading state.
+-   User messages.
+-   AI responses.
+-   Product results.
+-   Auto-scroll.
+-   Welcome screen.
+
+### `api.js`
+
+Calls:
+POST {VITE_API_URL}/chat
+
+Request:
+{
+  "session_id": "uuid",
+  "message": "Show me the available products"
+}
+
+### `session.js`
+
+Creates a browser session ID using `crypto.randomUUID()` and stores it
+in `localStorage`.
+
+This allows the backend to associate multiple messages from the same
+browser with the same Redis-backed conversation.
+
+### `ProductCard.jsx`
+
+Displays product information returned by the backend:
+
+-   Image
+-   Name
+-   Price
+-   Stock status
+-   WooCommerce product link
+
+## Environment variables
+Create `.env` locally:
+VITE_API_URL=http://localhost:8000
+
+For production, configure the variable in Render:
+VITE_API_URL=https://swasthya-coffee-api.onrender.com
+Do not commit `.env`.
+
+## Local development
+npm install
+npm run dev
+
+Open:
+http://localhost:5173
+
+The backend must be running separately.
+
+## Production build
+npm run build
+
+Vite creates:
+dist/
+
+## Render deployment
+This frontend is deployed as a Render Static Site.
+Build command:
+npm install; npm run build
+
+Publish directory:
+dist
+
+Live URL:
+https://swasthya-coffee-ui.onrender.com
+
+## Related backend
+The backend repository is the FastAPI service:
+coffee-ai-assistant
+
+Production backend:
+https://swasthya-coffee-api.onrender.com
